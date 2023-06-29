@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        const object = {
+            cb:null,
+            on(cb) {
+                this.cb = cb;
+            },
+            emit() {
+                this.cb();
+            }
+        }
+        const object2 = {
+            cb:null,
+            on(cb) {
+                this.cb = cb;
+            },
+            emit() {
+                this.cb();
+            }
+        }
+
+        
+        function onConnection(object) {
+            let count = 0;
+            object.on(() => {
+                count++;
+                console.log(count)
+            })
+        }
+
+        onConnection(object);
+        onConnection(object2);
+
+        object.emit();
+        object2.emit()
+    </script>
+
+
+    
+</body>
+</html>
